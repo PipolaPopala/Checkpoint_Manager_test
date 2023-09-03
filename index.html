@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heckpoint Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="body-container">
+
+        <header>
+            <h1 class="title">Heckpoint Manager test</h1>
+        </header>   
+
+        <main>
+
+            <section class="section post">
+                <form class="post__form" id="postForm" action="" method="">
+                    <input class="post__input" type="text" name="" id="postInputId" placeholder="Введите id">
+                    <input class="post__input" type="text" name="" id="postInputName" placeholder="Введите Ф.И.О.">
+                    <input class="post__input" type="text" name="" id="postInputCarNumber" placeholder="Введите номер машины">
+                    <input class="post__btn input-btn" type="submit" id="postBtn" value="Отправить">
+                    <p class="comment">в поле вывода получаем введённые данные, или ошибку, если хотя бы одно из полей осталось пустым</p>
+                    <div class="output output-post">
+                        <p class="output-post__text" id="outputPostText"></p>
+                    </div>
+                </form>
+            </section>
+
+            <section class="section get">
+                <form class="get__form" id="getForm" action="" method="">
+                    <p class="comment">вводим запрашиваемый id в диапозоне 1-100 и успешно получаем данные, при любом другом вводе получаем ошибку в поле вывода ниже и консоле</p>
+                    <input class="get__input" type="text" name="" id="getId" placeholder="Введите id">
+                    <input class="get__btn input-btn" type="submit" id="getBtn" value="Получить">
+                    <div class="output output-get">
+                        <p class="output-get__text" id="outputGetText"></p>
+                    </div>
+                </form>
+            </section>
+
+        </main>
+        
+    </div>
+
+</body>
+</html>
