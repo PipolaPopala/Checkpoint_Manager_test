@@ -16,33 +16,73 @@
     <div class="body-container">
 
         <header>
-            <h1 class="title">Checkpoint Manager test</h1>
+            <h1 class="title">Checkpoint Manager user-controller test</h1>
         </header>   
 
-        <main>
+        <main class="main">
 
-            <section class="section post">
-                <form class="post__form" id="postForm" action="" method="">
-                    <input class="post__input" type="text" name="" id="postInputId" placeholder="Введите id">
-                    <input class="post__input" type="text" name="" id="postInputName" placeholder="Введите Ф.И.О.">
-                    <input class="post__input" type="text" name="" id="postInputCarNumber" placeholder="Введите номер машины">
-                    <input class="post__btn input-btn" type="submit" id="postBtn" value="Отправить">
-                    <p class="comment">в поле вывода получаем введённые данные, или ошибку, если хотя бы одно из полей осталось пустым</p>
-                    <div class="output output-post">
-                        <p class="output-post__text" id="outputPostText"></p>
-                    </div>
-                </form>
-            </section>
+            <section class="user-controller">
 
-            <section class="section get">
-                <form class="get__form" id="getForm" action="" method="">
-                    <p class="comment">вводим запрашиваемый id в диапозоне 1-100 и успешно получаем данные, при любом другом вводе получаем ошибку в поле вывода ниже и консоле</p>
-                    <input class="get__input" type="text" name="" id="getId" placeholder="Введите id">
-                    <input class="get__btn input-btn" type="submit" id="getBtn" value="Получить">
-                    <div class="output output-get">
-                        <p class="output-get__text" id="outputGetText"></p>
-                    </div>
-                </form>
+                <div class="get">
+                    <form class="request-form get__form" id="getForm" action="" method="">
+                        <p class="comment">GET запрос</p>
+                        <input class="input get__input" type="text" name="" id="getId" placeholder="Введите id">
+                        <input class="get__btn input-btn" type="button" id="getBtn" value="Получить">
+                        <div class="output output-get">
+                            <p class="output-get__text" id="outputGetText"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="put">
+                    <form class="request-form put__form" id="putForm" action="" method="">
+                        <p class="comment">PUT запрос</p>
+                        <input class="input put__input" type="text" name="" id="putId" placeholder="Введите id">
+                        <input class="input put__input" type="text" name="" id="putName" placeholder="Введите Ф.И.О.">
+                        <input class="input put__input" type="text" name="" id="putCarNumber" placeholder="Введите номер машины">
+                        <input class="put__btn input-btn" type="button" id="putBtn" value="Отправить">
+                        <div class="output output-put">
+                            <p class="output-put__text" id="putText"></p>
+                    </form>
+                </div>
+
+                <div class="post">
+                    <form class="request-form post__form" id="postForm" action="" method="">
+                        <p class="comment">POST запрос</p>
+                        <input class="input post__input" type="text" name="" id="postId" placeholder="Введите id">
+                        <input class="input post__input" type="text" name="" id="postName" placeholder="Введите Ф.И.О.">
+                        <input class="input post__input" type="text" name="" id="postCarNumber" placeholder="Введите номер машины">
+                        <input class="post__btn input-btn" type="button" id="postBtn" value="Отправить">
+                        <div class="output output-post">
+                            <p class="output-post__text" id="postText"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="delete">
+                    <form class="request-form delete__form" id="deleteForm" action="" method="">
+                        <p class="comment">DELETE запрос</p>
+                        <input class="input delete__input" type="text" name="" id="deleteId" placeholder="Введите id">
+                        <input class="delete__btn input-btn" type="button" id="deleteBtn" value="Удалить">
+                        <div class="output output-delete">
+                            <p class="output-delete__text" id="deleteText"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="patch">
+                    <form class="request-form patch__form" id="patchForm" action="" method="">
+                        <p class="comment">PATCH запрос</p>
+                        <input class="input patch__input" type="text" name="" id="patchId" placeholder="Введите id">
+                        <input class="input patch__input" type="text" name="" id="patchName" placeholder="Введите Ф.И.О.">
+                        <input class="input patch__input" type="text" name="" id="patchCarNumber" placeholder="Введите номер машины">
+                        <input class="patch__btn input-btn" type="button" id="patchBtn" value="Отправить">
+                        <div class="output output-patch">
+                            <p class="output-patch__text" id="patchText"></p>
+                        </div>
+                    </form>
+                </div>
+
             </section>
 
         </main>
