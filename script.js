@@ -9,31 +9,31 @@ const testURL = 'https://jsonplaceholder.typicode.com/posts/'
 const getForm = document.getElementById('getForm')
 const getId = document.getElementById('getId')
 const getBtn = document.getElementById('getBtn')
-const outputGetText = document.getElementById('outputGetText')
+const getText = document.getElementById('GetText')
 
 getBtn.addEventListener('click', getData.bind(getBtn, getId))
 
-function getData(input) {
-    const id = input.value
+function getData(inputId) {
+    const id = inputId.value
     let output = ''
     axios({
         method: 'get',
         url: `${testURL}${id}`,
         })
-        .then( response => {
-             console.log(response.data)
-             output = `id: ${response.data.id} <br>body: ${response.data.body} <br>title: ${response.data.title}`
-             alert('Данные успешно получены!')
-        })
-        .catch( error => {
-             console.error(error)
-             output = 'error get'
-             alert('Произошла ошибка при получении данных!')
-        })
-        .finally( () => {
-            getForm.reset()
-            outputGetText.innerHTML = output
-        })
+    .then( response => {
+            console.log(response.data)
+            output = `id: ${response.data.id} <br>body: ${response.data.body} <br>title: ${response.data.title}`
+            alert('Данные успешно получены!')
+    })
+    .catch( error => {
+            console.error(error)
+            output = error
+            alert('Произошла ошибка при получении данных!')
+    })
+    .finally( () => {
+        getForm.reset()
+        getText.innerHTML = output
+    })
 }
 
 // PUT ------------------------------------------
@@ -70,7 +70,7 @@ putBtn.addEventListener('click', (event) => {
     })
     .catch( error => {
             console.error(error)
-            output = 'error put'
+            output = error
             alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
@@ -113,7 +113,7 @@ postBtn.addEventListener('click', (event) => {
     })
     .catch( error => {
         console.error(error)
-        output = 'error post'
+        output = error
         alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
@@ -144,7 +144,7 @@ deleteBtn.addEventListener('click', (event) => {
     })
     .catch( error => {
         console.error(error)
-        output = 'error delete'
+        output = error
         alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
@@ -187,7 +187,7 @@ patchBtn.addEventListener('click', (event) => {
     })
     .catch( error => {
         console.error(error)
-        output = 'error patch'
+        output = error
         alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
