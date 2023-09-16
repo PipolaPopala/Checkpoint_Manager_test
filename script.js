@@ -6,7 +6,7 @@ const testURL = 'https://jsonplaceholder.typicode.com/posts/'
 
 // GET ------------------------------------------
 
-const getForm = document.getElementById('getForm')
+// const getForm = document.getElementById('getForm')
 const getId = document.getElementById('getId')
 const getBtn = document.getElementById('getBtn')
 const getText = document.getElementById('GetText')
@@ -31,25 +31,26 @@ function getData(inputId) {
             alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
-        getForm.reset()
+        this.parentNode.reset()
         getText.innerHTML = output
     })
 }
 
 // PUT ------------------------------------------
 
-const putForm = document.getElementById('putForm')
+// const putForm = document.getElementById('putForm')
 const putId = document.getElementById('putId')
 const putName = document.getElementById('putName')
 const putCarNumber = document.getElementById('putCarNumber')
 const putBtn = document.getElementById('putBtn')
 const putText = document.getElementById('putText')
 
-putBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    const id = putId.value 
-    const name = putName.value 
-    const carNumber = putCarNumber.value 
+putBtn.addEventListener('click', putData.bind(putBtn, putId, putName, putCarNumber))
+
+function putData(inputId, inputName, inputNumber) {
+    const id = inputId.value 
+    const name = inputName.value 
+    const carNumber = inputNumber.value 
     let output = ''
     axios({
         method: 'put',
@@ -74,25 +75,26 @@ putBtn.addEventListener('click', (event) => {
             alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
-        putForm.reset()
+        this.parentNode.reset()
         putText.innerHTML = output
     })
-})
+}
 
 // POST ------------------------------------------
 
-const postForm = document.getElementById('postForm')
+// const postForm = document.getElementById('postForm')
 const postId = document.getElementById('postId')
 const postName = document.getElementById('postName')
 const postCarNumber = document.getElementById('postCarNumber')
 const postBtn = document.getElementById('postBtn')
 const postText = document.getElementById('postText')
 
-postBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    const id = postId.value 
-    const name = postName.value 
-    const carNumber = postCarNumber.value 
+postBtn.addEventListener('click', postData.bind(postBtn, postId, postName, postCarNumber))
+
+function postData(inputId, inputName, inputNumber) {
+    const id = inputId.value 
+    const name = inputName.value 
+    const carNumber = inputNumber.value 
     let output = ''
     axios({
         method: 'post',
@@ -117,21 +119,22 @@ postBtn.addEventListener('click', (event) => {
         alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
-        postForm.reset()
+        this.parentNode.reset()
         postText.innerHTML = output
     })
-})
+}
 
 // DELETE ------------------------------------------
 
-const deleteForm = document.getElementById('deleteForm')
+// const deleteForm = document.getElementById('deleteForm')
 const deleteId = document.getElementById('deleteId')
 const deleteBtn = document.getElementById('deleteBtn')
 const deleteText = document.getElementById('deleteText')
 
-deleteBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    const id = deleteId.value
+deleteBtn.addEventListener('click', deleteData.bind(deleteBtn, deleteId))
+
+function deleteData(inputId) {
+    const id = inputId.value
     let output = ''
     axios({
         method: 'delete',
@@ -148,25 +151,26 @@ deleteBtn.addEventListener('click', (event) => {
         alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
-        deleteForm.reset()
+        this.parentNode.reset()
         deleteText.innerHTML = output
     })
-})
+}
 
 // PATCH ------------------------------------------
 
-const patchForm = document.getElementById('patchForm')
+// const patchForm = document.getElementById('patchForm')
 const patchId = document.getElementById('patchId')
 const patchName = document.getElementById('patchName')
 const patchCarNumber = document.getElementById('patchCarNumber')
 const patchBtn = document.getElementById('patchBtn')
 const patchText = document.getElementById('patchText')
 
-patchBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    const id = patchId.value 
-    const name = patchName.value 
-    const carNumber = patchCarNumber.value 
+patchBtn.addEventListener('click', patchData.bind(patchBtn, patchId, patchName, patchCarNumber))
+
+function patchData(inputId, inputName, inputNumber) {
+    const id = inputId.value 
+    const name = inputName.value 
+    const carNumber = inputNumber.value 
     let output = ''
     axios({
         method: 'patch',
@@ -191,9 +195,9 @@ patchBtn.addEventListener('click', (event) => {
         alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
-        patchForm.reset()
+        this.parentNode.reset()
         patchText.innerHTML = output
     })
-})
+}
 
 // OTHER ------------------------------------------
