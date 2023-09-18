@@ -20,15 +20,15 @@ function getUserAll() {
     .then( response => {
         console.log(response.data)
         output = response.data
-        alert('Данные успешно получены!')
+        // alert('Данные успешно получены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при получении данных!')
+        // alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         getTextAll.innerHTML = output
     })
 }
@@ -73,15 +73,15 @@ function putUser() {
         }
         console.log(response.data)
         output = `id: ${id} <br>fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
-        alert('Данные успешно отправлены!')
+        // alert('Данные успешно отправлены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при отправке данных!')
+        // alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         putText.innerHTML = output
     })
 }
@@ -123,15 +123,15 @@ function postUser() {
         }
         console.log(response.data)
         output = `fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
-        alert('Данные успешно отправлены!')
+        // alert('Данные успешно отправлены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при отправке данных!')
+        // alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         postText.innerHTML = output
     })
     
@@ -183,15 +183,15 @@ function getUserId() {
     .then( response => {
         console.log(response.data)
         output = response.data
-        alert('Данные успешно получены!')
+        // alert('Данные успешно получены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при получении данных!')
+        // alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         getTextId.innerHTML = output
     })
 }
@@ -215,15 +215,15 @@ function deleteUser() {
     .then( response => {
         console.log(response.data)
         output = `id: ${response.data.id} <br>body: ${response.data.body} <br>title: ${response.data.title}`
-        alert('Данные успешно получены!')
+        // alert('Данные успешно получены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при получении данных!')
+        // alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         deleteText.innerHTML = output
     })
 }
@@ -244,27 +244,23 @@ function patchUserId() {
     let output = ''
     axios({
         method: 'patch',
-        url: `${baseURL}user/${id}`,
-        data: {
-            id: id,
-            isBlocked: isBlocked,
-        }
+        url: `${baseURL}user/${id}${isBlocked}`,
     })
     .then( response => {
         if(id.length === 0) {
             throw new Error('error')
         }
-            console.log(response.data)
-            output = `id: ${id} <br>isBlocked: ${isBlocked}`
-            alert('Данные успешно отправлены!')
+        console.log(response.data)
+        output = `id: ${id} <br>isBlocked: ${isBlocked}`
+        // alert('Данные успешно отправлены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при отправке данных!')
+        // alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         patchText.innerHTML = output
     })
 }
@@ -284,25 +280,22 @@ function patchUserIdUnblock() {
     axios({
         method: 'patch',
         url: `${baseURL}user/unblock/${id}`,
-        data: {
-            id: id,
-        }
     })
     .then( response => {
         if(id.length === 0) {
             throw new Error('error')
         }
-            console.log(response.data)
-            output = `id: ${id} <br>`
-            alert('Данные успешно отправлены!')
+        console.log(response.data)
+        output = `id: ${id} <br>`
+        // alert('Данные успешно отправлены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при отправке данных!')
+        // alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         patchTextUnblock.innerHTML = output
     })
 }
@@ -322,26 +315,22 @@ function patchUserIdBlock() {
     axios({
         method: 'patch',
         url: `${baseURL}user/block/${id}`,
-        data: {
-            id: id,
-            isBlocked: false,
-        }
     })
     .then( response => {
         if(id.length === 0) {
             throw new Error('error')
         }
-            console.log(response.data)
-            output = `id: ${id}`
-            alert('Данные успешно отправлены!')
+        console.log(response.data)
+        output = `id: ${id}`
+        // alert('Данные успешно отправлены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при отправке данных!')
+        // alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         patchTextBlock.innerHTML = output
     })
 }
@@ -365,15 +354,15 @@ function getUserIdNumber() {
     .then( response => {
         console.log(response.data)
         output = response.data
-        alert('Данные успешно получены!')
+        // alert('Данные успешно получены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при получении данных!')
+        // alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         getTextIdNumber.innerHTML = output
     })
 }
@@ -397,15 +386,15 @@ function getUserFullName() {
     .then( response => {
         console.log(response.data)
         output = response.data
-        alert('Данные успешно получены!')
+        // alert('Данные успешно получены!')
     })
     .catch( error => {
         console.error(error)
         output = error
-        alert('Произошла ошибка при получении данных!')
+        // alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
-        this.parentNode.reset()
+        // this.parentNode.reset()
         getTextFullName.innerHTML = output
     })
 }
