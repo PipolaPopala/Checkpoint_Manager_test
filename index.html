@@ -24,22 +24,24 @@
             <section class="user-controller">
 
                 <div class="get">
-                    <form class="request-form get__form" id="getForm" action="" method="">
-                        <p class="comment">GET запрос</p>
-                        <input class="input get__input" type="text" name="" id="getId" placeholder="Введите id">
-                        <input class="get__btn input-btn" type="button" id="getBtn" value="Получить">
+                    <form class="request-form get__form" action="" method="">
+                        <p class="comment">GET запрос /user</p>
+                        <input class="get__btn input-btn" type="button" id="getBtnAll" value="Получить">
                         <div class="output output-get">
-                            <p class="output-get__text" id="GetText"></p>
+                            <p class="output-get__text" id="getTextAll"></p>
                         </div>
                     </form>
                 </div>
 
                 <div class="put">
-                    <form class="request-form put__form" id="putForm" action="" method="">
-                        <p class="comment">PUT запрос</p>
+                    <form class="request-form put__form" action="" method="">
+                        <p class="comment">PUT запрос /user</p>
                         <input class="input put__input" type="text" name="" id="putId" placeholder="Введите id">
-                        <input class="input put__input" type="text" name="" id="putName" placeholder="Введите Ф.И.О.">
-                        <input class="input put__input" type="text" name="" id="putCarNumber" placeholder="Введите номер машины">
+                        <input class="input put__input" type="text" name="" id="putFullName" placeholder="Введите Ф.И.О.">
+                        <input class="input put__input" type="text" name="" id="putDateOfBirth" placeholder="Введите дату рождения">
+                        <input class="input put__input" type="text" name="" id="putMainNumber" placeholder="Введите номер телефона">
+                        <input class="input put__input" type="text" name="" id="putEmail" placeholder="Введите адрес электронной почты">
+                        <input class="input put__input" type="text" name="" id="putPassword" placeholder="Введите пароль">
                         <input class="put__btn input-btn" type="button" id="putBtn" value="Отправить">
                         <div class="output output-put">
                             <p class="output-put__text" id="putText"></p>
@@ -47,11 +49,13 @@
                 </div>
 
                 <div class="post">
-                    <form class="request-form post__form" id="postForm" action="" method="">
-                        <p class="comment">POST запрос</p>
-                        <input class="input post__input" type="text" name="" id="postId" placeholder="Введите id">
-                        <input class="input post__input" type="text" name="" id="postName" placeholder="Введите Ф.И.О.">
-                        <input class="input post__input" type="text" name="" id="postCarNumber" placeholder="Введите номер машины">
+                    <form class="request-form post__form" action="" method="">
+                        <p class="comment">POST запрос user/authentication</p>
+                        <input class="input post__input" type="text" name="" id="postFullName" placeholder="Введите Ф.И.О.">
+                        <input class="input post__input" type="text" name="" id="postDateOfBirth" placeholder="Введите дату рождения">
+                        <input class="input post__input" type="text" name="" id="postMainNumber" placeholder="Введите номер телефона">
+                        <input class="input post__input" type="text" name="" id="postEmail" placeholder="Введите адрес электронной почты">
+                        <input class="input post__input" type="text" name="" id="postPassword" placeholder="Введите пароль">
                         <input class="post__btn input-btn" type="button" id="postBtn" value="Отправить">
                         <div class="output output-post">
                             <p class="output-post__text" id="postText"></p>
@@ -59,9 +63,20 @@
                     </form>
                 </div>
 
+                <div class="get">
+                    <form class="request-form get__form" action="" method="">
+                        <p class="comment">GET запрос /user/{id}</p>
+                        <input class="input get__input" type="text" name="" id="getId" placeholder="Введите id">
+                        <input class="get__btn input-btn" type="button" id="getBtnId" value="Получить">
+                        <div class="output output-get">
+                            <p class="output-get__text" id="getTextId"></p>
+                        </div>
+                    </form>
+                </div>
+
                 <div class="delete">
-                    <form class="request-form delete__form" id="deleteForm" action="" method="">
-                        <p class="comment">DELETE запрос</p>
+                    <form class="request-form delete__form" action="" method="">
+                        <p class="comment">DELETE запрос /user/{id}</p>
                         <input class="input delete__input" type="text" name="" id="deleteId" placeholder="Введите id">
                         <input class="delete__btn input-btn" type="button" id="deleteBtn" value="Удалить">
                         <div class="output output-delete">
@@ -71,14 +86,57 @@
                 </div>
 
                 <div class="patch">
-                    <form class="request-form patch__form" id="patchForm" action="" method="">
-                        <p class="comment">PATCH запрос</p>
+                    <form class="request-form patch__form" action="" method="">
+                        <p class="comment">PATCH запрос /user/{id}</p>
                         <input class="input patch__input" type="text" name="" id="patchId" placeholder="Введите id">
-                        <input class="input patch__input" type="text" name="" id="patchName" placeholder="Введите Ф.И.О.">
-                        <input class="input patch__input" type="text" name="" id="patchCarNumber" placeholder="Введите номер машины">
+                        <label class="comment" for="patchBlock"><input type="checkbox" name="" id="patchBlock"> block / unblock</label>
                         <input class="patch__btn input-btn" type="button" id="patchBtn" value="Отправить">
                         <div class="output output-patch">
                             <p class="output-patch__text" id="patchText"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="patch">
+                    <form class="request-form patch__form" action="" method="">
+                        <p class="comment">PATCH запрос /user/unblock/{id}</p>
+                        <input class="input patch__input" type="text" name="" id="patchIdUnblock" placeholder="Введите id">
+                        <input class="patch__btn input-btn" type="button" id="patchBtnUnblock" value="Отправить">
+                        <div class="output output-patch">
+                            <p class="output-patch__text" id="patchTextUnblock"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="patch">
+                    <form class="request-form patch__form" action="" method="">
+                        <p class="comment">PATCH запрос /user/block/{id}</p>
+                        <input class="input patch__input" type="text" name="" id="patchIdBlock" placeholder="Введите id">
+                        <input class="patch__btn input-btn" type="button" id="patchBtnBlock" value="Отправить">
+                        <div class="output output-patch">
+                            <p class="output-patch__text" id="patchTextBlock"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="get">
+                    <form class="request-form get__form" action="" method="">
+                        <p class="comment">GET запрос /user/number/{id}</p>
+                        <input class="input get__input" type="text" name="" id="getIdNumber" placeholder="Введите id">
+                        <input class="get__btn input-btn" type="button" id="getBtnIdNumber" value="Получить">
+                        <div class="output output-get">
+                            <p class="output-get__text" id="getTextIdNumber"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="get">
+                    <form class="request-form get__form" action="" method="">
+                        <p class="comment">GET запрос /user/name</p>
+                        <input class="input get__input" type="text" name="" id="getFullName" placeholder="Введите Ф.И.О.">
+                        <input class="get__btn input-btn" type="button" id="getBtnFullName" value="Получить">
+                        <div class="output output-get">
+                            <p class="output-get__text" id="getTextFullName"></p>
                         </div>
                     </form>
                 </div>
@@ -88,6 +146,5 @@
         </main>
         
     </div>
-
 </body>
 </html>

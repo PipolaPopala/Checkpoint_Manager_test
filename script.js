@@ -1,78 +1,84 @@
-'use strict'
 
 const baseURL = 'http://185.233.83.75:8080/'
 const testURL = 'https://jsonplaceholder.typicode.com/posts/'
 
 
-// GET ------------------------------------------
+// GET ------------------------------------------ user
 
-// const getForm = document.getElementById('getForm')
-const getId = document.getElementById('getId')
-const getBtn = document.getElementById('getBtn')
-const getText = document.getElementById('GetText')
 
-getBtn.addEventListener('click', getData.bind(getBtn, getId))
+const getBtnAll = document.getElementById('getBtnAll')
+const getTextAll = document.getElementById('getTextAll')
 
-function getData(inputId) {
-    const id = inputId.value
+getBtnAll.addEventListener('click', getUserAll.bind(getBtnAll))
+
+function getUserAll() {
     let output = ''
     axios({
         method: 'get',
-        url: `${testURL}${id}`,
+        url: `${baseURL}user`,
         })
     .then( response => {
-            console.log(response.data)
-            output = `id: ${response.data.id} <br>body: ${response.data.body} <br>title: ${response.data.title}`
-            alert('Данные успешно получены!')
+        console.log(response.data)
+        output = response.data
+        alert('Данные успешно получены!')
     })
     .catch( error => {
-            console.error(error)
-            output = error
-            alert('Произошла ошибка при получении данных!')
+        console.error(error)
+        output = error
+        alert('Произошла ошибка при получении данных!')
     })
     .finally( () => {
         this.parentNode.reset()
-        getText.innerHTML = output
+        getTextAll.innerHTML = output
     })
 }
 
-// PUT ------------------------------------------
+// PUT ------------------------------------------ user
 
-// const putForm = document.getElementById('putForm')
+
 const putId = document.getElementById('putId')
-const putName = document.getElementById('putName')
-const putCarNumber = document.getElementById('putCarNumber')
+const putFullName = document.getElementById('putFullName')
+const putDateOfBirth = document.getElementById('putDateOfBirth')
+const putMainNumber = document.getElementById('putMainNumber')
+const putEmail = document.getElementById('putEmail')
+const putPassword = document.getElementById('putPassword')
 const putBtn = document.getElementById('putBtn')
 const putText = document.getElementById('putText')
 
-putBtn.addEventListener('click', putData.bind(putBtn, putId, putName, putCarNumber))
+putBtn.addEventListener('click', putUser.bind(putBtn))
 
-function putData(inputId, inputName, inputNumber) {
-    const id = inputId.value 
-    const name = inputName.value 
-    const carNumber = inputNumber.value 
+function putUser() {
+    const id = putId.value 
+    const fullName = putFullName.value 
+    const dateOfBirth = putDateOfBirth.value 
+    const mainNumber = putMainNumber.value 
+    const email = putEmail.value
+    const password = putPassword.value
     let output = ''
     axios({
         method: 'put',
-        url: `${testURL}${id}`,
+        url: `${baseURL}user`,
         data: {
             id: id,
-            name: name,
-            carNumber: carNumber,
+            fullName: fullName,
+            dateOfBirth: dateOfBirth,
+            mainNumber: mainNumber,
+            email: email,
+            password: password,
         }
     })
     .then( response => {
-        if( id.length === 0 || name.length === 0 || carNumber.length === 0) {
+        if(id.length === 0 || fullName.length === 0 || dateOfBirth.length === 0 || mainNumber.length === 0 || email.length === 0 || password.length === 0) {
             throw new Error('error')
         }
-            console.log(response.data)
-            output = `id: ${id} <br>name: ${name} <br>carNumber: ${carNumber}`
-            alert('Данные успешно отправлены!')
+        console.log(response.data)
+        output = `id: ${id} <br>fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
+        alert('Данные успешно отправлены!')
     })
     .catch( error => {
-            console.error(error)
-            output = error
-            alert('Произошла ошибка при отправке данных!')
+        console.error(error)
+        output = error
+        alert('Произошла ошибка при отправке данных!')
     })
     .finally( () => {
         this.parentNode.reset()
@@ -80,38 +86,44 @@ function putData(inputId, inputName, inputNumber) {
     })
 }
 
-// POST ------------------------------------------
+// POST ------------------------------------------ user/authentication
 
-// const postForm = document.getElementById('postForm')
-const postId = document.getElementById('postId')
-const postName = document.getElementById('postName')
-const postCarNumber = document.getElementById('postCarNumber')
+
+const postFullName = document.getElementById('postFullName')
+const postDateOfBirth = document.getElementById('postDateOfBirth')
+const postMainNumber = document.getElementById('postMainNumber')
+const postEmail = document.getElementById('postEmail')
+const postPassword = document.getElementById('postPassword')
 const postBtn = document.getElementById('postBtn')
 const postText = document.getElementById('postText')
 
-postBtn.addEventListener('click', postData.bind(postBtn, postId, postName, postCarNumber))
+postBtn.addEventListener('click', postUser.bind(postBtn))
 
-function postData(inputId, inputName, inputNumber) {
-    const id = inputId.value 
-    const name = inputName.value 
-    const carNumber = inputNumber.value 
+function postUser() {
+    const fullName = postFullName.value 
+    const dateOfBirth = postDateOfBirth.value 
+    const mainNumber = postMainNumber.value 
+    const email = postEmail.value
+    const password = postPassword.value
     let output = ''
     axios({
         method: 'post',
-        url: `${testURL}`,
+        url: `${baseURL}user/authentication`,
         data: {
-            id: id,
-            name: name,
-            carNumber: carNumber,
+            fullName: fullName,
+            dateOfBirth: dateOfBirth,
+            mainNumber: mainNumber,
+            email: email,
+            password: password,
         }
     })
     .then( response => {
-        if( id.length === 0 || name.length === 0 || carNumber.length === 0) {
+        if(fullName.length === 0 || dateOfBirth.length === 0 || mainNumber.length === 0 || email.length === 0 || password.length === 0) {
             throw new Error('error')
         }
-            console.log(response.data)
-            output = `id: ${id} <br>name: ${name} <br>carNumber: ${carNumber}`
-            alert('Данные успешно отправлены!')
+        console.log(response.data)
+        output = `fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
+        alert('Данные успешно отправлены!')
     })
     .catch( error => {
         console.error(error)
@@ -122,23 +134,83 @@ function postData(inputId, inputName, inputNumber) {
         this.parentNode.reset()
         postText.innerHTML = output
     })
+    
+    // fetch(`${baseURL}user/authentication`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ fullName, dateOfBirth, mainNumber, email, password })
+    // })
+    //     .then(response => {
+    //         if(fullName.length === 0 || dateOfBirth.length === 0 || mainNumber.length === 0 || email.length === 0 || password.length === 0) {
+    //             throw new Error('error')
+    //         }
+    //         return response.json()
+    //     })
+    //     .then(data => {
+    //         console.log(data)
+    //         output = `fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
+    //         alert('Данные успешно отправлены!')
+    //     })
+    //     .catch(error => {
+    //         console.error(error)
+    //         output = error
+    //         alert('Произошла ошибка при отправке данных!')
+    //     })
+    //     .finally(() => {
+    //         this.parentNode.reset()
+    //         postText.innerHTML = output
+    //     });
+}
+
+// GET ------------------------------------------ user/{id}
+
+
+const getId = document.getElementById('getId')
+const getBtnId = document.getElementById('getBtnId')
+const getTextId = document.getElementById('getTextId')
+
+getBtnId.addEventListener('click', getUserId.bind(getBtnId))
+
+function getUserId() {
+    const id = getId.value 
+    let output = ''
+    axios({
+        method: 'get',
+        url: `${baseURL}user/${id}`,
+        })
+    .then( response => {
+        console.log(response.data)
+        output = response.data
+        alert('Данные успешно получены!')
+    })
+    .catch( error => {
+        console.error(error)
+        output = error
+        alert('Произошла ошибка при получении данных!')
+    })
+    .finally( () => {
+        this.parentNode.reset()
+        getTextId.innerHTML = output
+    })
 }
 
 // DELETE ------------------------------------------
 
-// const deleteForm = document.getElementById('deleteForm')
+
 const deleteId = document.getElementById('deleteId')
 const deleteBtn = document.getElementById('deleteBtn')
 const deleteText = document.getElementById('deleteText')
 
-deleteBtn.addEventListener('click', deleteData.bind(deleteBtn, deleteId))
+deleteBtn.addEventListener('click', deleteUser.bind(deleteBtn))
 
-function deleteData(inputId) {
-    const id = inputId.value
+function deleteUser() {
+    const id = deleteId.value
     let output = ''
     axios({
         method: 'delete',
-        url: `${testURL}${id}`,
+        url: `${baseURL}user/${id}`,
     })
     .then( response => {
         console.log(response.data)
@@ -156,37 +228,34 @@ function deleteData(inputId) {
     })
 }
 
-// PATCH ------------------------------------------
+// PATCH ------------------------------------------ user/{id}
 
-// const patchForm = document.getElementById('patchForm')
+
 const patchId = document.getElementById('patchId')
-const patchName = document.getElementById('patchName')
-const patchCarNumber = document.getElementById('patchCarNumber')
+const patchBlock = document.getElementById('patchBlock')
 const patchBtn = document.getElementById('patchBtn')
 const patchText = document.getElementById('patchText')
 
-patchBtn.addEventListener('click', patchData.bind(patchBtn, patchId, patchName, patchCarNumber))
+patchBtn.addEventListener('click', patchUserId.bind(patchBtn))
 
-function patchData(inputId, inputName, inputNumber) {
-    const id = inputId.value 
-    const name = inputName.value 
-    const carNumber = inputNumber.value 
+function patchUserId() {
+    const id = patchId.value 
+    const isBlocked = patchBlock.checked
     let output = ''
     axios({
         method: 'patch',
-        url: `${testURL}${id}`,
+        url: `${baseURL}user/${id}`,
         data: {
             id: id,
-            name: name,
-            carNumber: carNumber,
+            isBlocked: isBlocked,
         }
     })
     .then( response => {
-        if( id.length === 0 || name.length === 0 || carNumber.length === 0) {
+        if(id.length === 0) {
             throw new Error('error')
         }
             console.log(response.data)
-            output = `id: ${id} <br>name: ${name} <br>carNumber: ${carNumber}`
+            output = `id: ${id} <br>isBlocked: ${isBlocked}`
             alert('Данные успешно отправлены!')
     })
     .catch( error => {
@@ -200,4 +269,146 @@ function patchData(inputId, inputName, inputNumber) {
     })
 }
 
+// PATCH ------------------------------------------ user/unblock/{id}
+
+
+const patchIdUnblock = document.getElementById('patchIdUnblock')
+const patchBtnUnblock = document.getElementById('patchBtnUnblock')
+const patchTextUnblock = document.getElementById('patchTextUnblock')
+
+patchBtnUnblock.addEventListener('click', patchUserIdUnblock.bind(patchBtnUnblock))
+
+function patchUserIdUnblock() {
+    const id = patchIdUnblock.value 
+    let output = ''
+    axios({
+        method: 'patch',
+        url: `${baseURL}user/unblock/${id}`,
+        data: {
+            id: id,
+        }
+    })
+    .then( response => {
+        if(id.length === 0) {
+            throw new Error('error')
+        }
+            console.log(response.data)
+            output = `id: ${id} <br>`
+            alert('Данные успешно отправлены!')
+    })
+    .catch( error => {
+        console.error(error)
+        output = error
+        alert('Произошла ошибка при отправке данных!')
+    })
+    .finally( () => {
+        this.parentNode.reset()
+        patchTextUnblock.innerHTML = output
+    })
+}
+
+// PATCH ------------------------------------------ user/block/{id}
+
+
+const patchIdBlock = document.getElementById('patchIdBlock')
+const patchBtnBlock = document.getElementById('patchBtnBlock')
+const patchTextBlock = document.getElementById('patchTextBlock')
+
+patchBtnBlock.addEventListener('click', patchUserIdBlock.bind(patchBtnBlock))
+
+function patchUserIdBlock() {
+    const id = patchIdBlock.value 
+    let output = ''
+    axios({
+        method: 'patch',
+        url: `${baseURL}user/block/${id}`,
+        data: {
+            id: id,
+            isBlocked: false,
+        }
+    })
+    .then( response => {
+        if(id.length === 0) {
+            throw new Error('error')
+        }
+            console.log(response.data)
+            output = `id: ${id}`
+            alert('Данные успешно отправлены!')
+    })
+    .catch( error => {
+        console.error(error)
+        output = error
+        alert('Произошла ошибка при отправке данных!')
+    })
+    .finally( () => {
+        this.parentNode.reset()
+        patchTextBlock.innerHTML = output
+    })
+}
+
+// GET ------------------------------------------ user/number/{id}
+
+
+const getIdNumber = document.getElementById('getIdNumber')
+const getBtnIdNumber = document.getElementById('getBtnIdNumber')
+const getTextIdNumber = document.getElementById('getTextIdNumber')
+
+getBtnIdNumber.addEventListener('click', getUserIdNumber.bind(getBtnIdNumber))
+
+function getUserIdNumber() {
+    const id = getIdNumber.value 
+    let output = ''
+    axios({
+        method: 'get',
+        url: `${baseURL}user/number/${id}`,
+        })
+    .then( response => {
+        console.log(response.data)
+        output = response.data
+        alert('Данные успешно получены!')
+    })
+    .catch( error => {
+        console.error(error)
+        output = error
+        alert('Произошла ошибка при получении данных!')
+    })
+    .finally( () => {
+        this.parentNode.reset()
+        getTextIdNumber.innerHTML = output
+    })
+}
+
+// GET ------------------------------------------ user/name
+
+
+const getFullName = document.getElementById('getFullName')
+const getBtnFullName = document.getElementById('getBtnFullName')
+const getTextFullName = document.getElementById('getTextFullName')
+
+getBtnFullName.addEventListener('click', getUserFullName.bind(getBtnFullName))
+
+function getUserFullName() {
+    const name = getFullName.value 
+    let output = ''
+    axios({
+        method: 'get',
+        url: `${baseURL}user/${name}`,
+        })
+    .then( response => {
+        console.log(response.data)
+        output = response.data
+        alert('Данные успешно получены!')
+    })
+    .catch( error => {
+        console.error(error)
+        output = error
+        alert('Произошла ошибка при получении данных!')
+    })
+    .finally( () => {
+        this.parentNode.reset()
+        getTextFullName.innerHTML = output
+    })
+}
+
 // OTHER ------------------------------------------
+
