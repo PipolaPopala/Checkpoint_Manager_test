@@ -1,6 +1,7 @@
 
 const baseURL = 'http://185.233.83.75:8080/'
 const testURL = 'https://jsonplaceholder.typicode.com/posts/'
+const testsssssURL = 'https://checkpoint-manager.ru/'
 
 
 // GET ------------------------------------------ user
@@ -15,7 +16,7 @@ function getUserAll() {
     let output = ''
     axios({
         method: 'get',
-        url: `${baseURL}user`,
+        url: `${testsssssURL}user`,
         })
     .then( response => {
         console.log(response.data)
@@ -57,7 +58,7 @@ function putUser() {
     let output = ''
     axios({
         method: 'put',
-        url: `${baseURL}user`,
+        url: `${testsssssURL}user`,
         data: {
             id: id,
             fullName: fullName,
@@ -106,62 +107,62 @@ function postUser() {
     const email = postEmail.value
     const password = postPassword.value
     let output = ''
-    axios({
-        method: 'post',
-        url: `${baseURL}user/authentication`,
-        data: {
-            fullName: fullName,
-            dateOfBirth: dateOfBirth,
-            mainNumber: mainNumber,
-            email: email,
-            password: password,
-        }
-    })
-    .then( response => {
-        if(fullName.length === 0 || dateOfBirth.length === 0 || mainNumber.length === 0 || email.length === 0 || password.length === 0) {
-            throw new Error('error')
-        }
-        console.log(response.data)
-        output = `fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
-        // alert('Данные успешно отправлены!')
-    })
-    .catch( error => {
-        console.error(error)
-        output = error
-        // alert('Произошла ошибка при отправке данных!')
-    })
-    .finally( () => {
-        // this.parentNode.reset()
-        postText.innerHTML = output
-    })
-    
-    // fetch(`${baseURL}user/authentication`, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({ fullName, dateOfBirth, mainNumber, email, password })
+    // axios({
+    //     method: 'post',
+    //     url: `${testsssssURL}user/authentication`,
+    //     data: {
+    //         fullName: fullName,
+    //         dateOfBirth: dateOfBirth,
+    //         mainNumber: mainNumber,
+    //         email: email,
+    //         password: password,
+    //     }
     // })
-    //     .then(response => {
-    //         if(fullName.length === 0 || dateOfBirth.length === 0 || mainNumber.length === 0 || email.length === 0 || password.length === 0) {
-    //             throw new Error('error')
-    //         }
-    //         return response.json()
-    //     })
-    //     .then(data => {
-    //         console.log(data)
-    //         output = `fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
-    //         alert('Данные успешно отправлены!')
-    //     })
-    //     .catch(error => {
-    //         console.error(error)
-    //         output = error
-    //         alert('Произошла ошибка при отправке данных!')
-    //     })
-    //     .finally(() => {
-    //         this.parentNode.reset()
-    //         postText.innerHTML = output
-    //     });
+    // .then( response => {
+    //     if(fullName.length === 0 || dateOfBirth.length === 0 || mainNumber.length === 0 || email.length === 0 || password.length === 0) {
+    //         throw new Error('error')
+    //     }
+    //     console.log(response.data)
+    //     output = `fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
+    //     // alert('Данные успешно отправлены!')
+    // })
+    // .catch( error => {
+    //     console.error(error)
+    //     output = error
+    //     // alert('Произошла ошибка при отправке данных!')
+    // })
+    // .finally( () => {
+    //     // this.parentNode.reset()
+    //     postText.innerHTML = output
+    // })
+    
+    fetch(`${testsssssURL}user/authentication`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ fullName, dateOfBirth, mainNumber, email, password })
+    })
+        .then(response => {
+            if(fullName.length === 0 || dateOfBirth.length === 0 || mainNumber.length === 0 || email.length === 0 || password.length === 0) {
+                throw new Error('error')
+            }
+            return response.json()
+        })
+        .then(data => {
+            console.log(data)
+            output = `fullName: ${fullName} <br>dateOfBirth: ${dateOfBirth} <br>mainNumber: ${mainNumber} <br>email: ${email} <br>password: ${password}`
+            // alert('Данные успешно отправлены!')
+        })
+        .catch(error => {
+            console.error(error)
+            output = error
+            // alert('Произошла ошибка при отправке данных!')
+        })
+        .finally(() => {
+            // this.parentNode.reset()
+            postText.innerHTML = output
+        });
 }
 
 // GET ------------------------------------------ user/{id}
@@ -178,7 +179,7 @@ function getUserId() {
     let output = ''
     axios({
         method: 'get',
-        url: `${baseURL}user/${id}`,
+        url: `${testsssssURL}user/${id}`,
         })
     .then( response => {
         console.log(response.data)
@@ -210,7 +211,7 @@ function deleteUser() {
     let output = ''
     axios({
         method: 'delete',
-        url: `${baseURL}user/${id}`,
+        url: `${testsssssURL}user/${id}`,
     })
     .then( response => {
         console.log(response.data)
@@ -244,7 +245,7 @@ function patchUserId() {
     let output = ''
     axios({
         method: 'patch',
-        url: `${baseURL}user/${id}${isBlocked}`,
+        url: `${testsssssURL}user/${id}${isBlocked}`,
     })
     .then( response => {
         if(id.length === 0) {
@@ -279,7 +280,7 @@ function patchUserIdUnblock() {
     let output = ''
     axios({
         method: 'patch',
-        url: `${baseURL}user/unblock/${id}`,
+        url: `${testsssssURL}user/unblock/${id}`,
     })
     .then( response => {
         if(id.length === 0) {
@@ -314,7 +315,7 @@ function patchUserIdBlock() {
     let output = ''
     axios({
         method: 'patch',
-        url: `${baseURL}user/block/${id}`,
+        url: `${testsssssURL}user/block/${id}`,
     })
     .then( response => {
         if(id.length === 0) {
@@ -349,7 +350,7 @@ function getUserIdNumber() {
     let output = ''
     axios({
         method: 'get',
-        url: `${baseURL}user/number/${id}`,
+        url: `${testsssssURL}user/number/${id}`,
         })
     .then( response => {
         console.log(response.data)
@@ -381,7 +382,7 @@ function getUserFullName() {
     let output = ''
     axios({
         method: 'get',
-        url: `${baseURL}user/${name}`,
+        url: `${testsssssURL}user/${name}`,
         })
     .then( response => {
         console.log(response.data)
