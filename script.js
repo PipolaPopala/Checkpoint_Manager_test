@@ -14,24 +14,48 @@ getBtnAll.addEventListener('click', getUserAll.bind(getBtnAll))
 
 function getUserAll() {
     let output = ''
-    axios({
-        method: 'get',
-        url: `${testsssssURL}user`,
-        })
-    .then( response => {
-        console.log(response.data)
-        output = response.data
-        // alert('Данные успешно получены!')
+    // axios({
+    //     method: 'get',
+    //     url: `${testsssssURL}user`,
+    //     })
+    // .then( response => {
+    //     console.log(response.data)
+    //     output = response.data
+    //     // alert('Данные успешно получены!')
+    // })
+    // .catch( error => {
+    //     console.error(error)
+    //     output = error
+    //     // alert('Произошла ошибка при получении данных!')
+    // })
+    // .finally( () => {
+    //     // this.parentNode.reset()
+    //     getTextAll.innerHTML = output
+    // })
+
+    fetch(`${baseURL}user`, {
+        mode: 'no-cors'
     })
-    .catch( error => {
-        console.error(error)
-        output = error
-        // alert('Произошла ошибка при получении данных!')
-    })
-    .finally( () => {
-        // this.parentNode.reset()
-        getTextAll.innerHTML = output
-    })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Произошла ошибка при получении данных! Статус ошибки: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    output = data;
+    // alert('Данные успешно получены!');
+  })
+  .catch(error => {
+    console.error(error);
+    output = error;
+    // alert('Произошла ошибка при получении данных!');
+  })
+  .finally(() => {
+    // this.parentNode.reset();
+    getTextAll.innerHTML = output;
+  });
 }
 
 // PUT ------------------------------------------ user
